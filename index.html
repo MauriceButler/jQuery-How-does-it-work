@@ -1,0 +1,91 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    
+    <title>Confusing & completely unreadable JavaScript performance tricks that you will
+        most probably never use, & some you might... | by Maurice Butler @butlermaurice
+    </title>
+
+    <link href="css/impress.css" rel="stylesheet" />
+    <link href="css/shCoreDefault.css" rel="stylesheet" />
+
+</head>
+<body class="impress-not-supported">
+	<div class="fallback-message">
+		Your trojan doesn't support impress.js. Get with the times and <a href="https://www.google.com/chrome">
+			install Chrome</a> already...
+	</div>
+	
+	<div id="impress">
+        
+		<audio id="joker" preload="auto autobuffer"> 
+		  <source src="steve_miller_the_joker.mp3" />
+		  <source src="steve_miller_the_joker.ogg" />
+		  <source src="steve_miller_the_joker.wav" />
+		</audio>
+		
+        <div id="firstslide" class="step">
+            jQuery - Soooo, How does it work ?
+        </div>
+
+        <div id="whoami" class="step" data-x="350" data-y="-250"  data-rotate="90">
+            So who am I?
+        </div>
+
+        <div id="spacecowboy" class="step" data-x="500" data-y="-1000" data-scale="0.5">
+           Some people call me the space cowboy...<img src="images/SpaceCowboy.png" style="display: block; margin-left: auto; margin-right: auto;" /> 
+        </div>
+
+        <div id="gangster" class="step" data-x="500" data-y="-1000" data-scale="0.3">
+            Some call me the gangster of love...<img src="images/GangsterOfLove.png" style="display: block; margin-left: auto; margin-right: auto;" />  
+        </div>
+ 
+        <div id="fluffy" class="step" data-x="500" data-y="-1000" data-scale="0.1">
+            Some call me that fluffy guy from Madagascar...
+            <img src="images/Maurice.png" style="float:right; margin:10px 200px 0 0;"/>  
+        </div>
+ 
+        <div class="step" data-y="600" >
+            Most however call me Maurice Butler.
+      
+           <img src="images/Twitter.png" style="float:left; margin:10px 10px 0 0;" /> 
+            <a href="https://twitter.com/ButlerMaurice" target="_blank">@butlermaurice</a>
+            <a href="http://mauricebutler.wordpress.com" target="_blank">mauricebutler.wordpress.com</a>
+            <a href="https://github.com/MauriceButler" target="_blank">github.com/MauriceButler</a>
+            Senior Analyst Programmer at Sunsuper
+        </div>
+ 
+        <div class="step" data-x="1500" data-y="-1400" >
+          <strong>Disclaimer: </strong> 
+        </div>
+
+        
+
+
+        <div class="step" data-x="14000" data-y="-1400" >
+           <img src="images/Twitter.png" style="float:left; margin:10px 10px 0 0;" /> 
+            <a href="https://twitter.com/ButlerMaurice" target="_blank">@butlermaurice</a>
+            <a href="http://mauricebutler.wordpress.com" target="_blank">mauricebutler.wordpress.com</a>
+            <a href="https://github.com/MauriceButler" target="_blank">github.com/MauriceButler</a>
+            Senior Analyst Programmer at Sunsuper
+        </div>
+
+    </div>
+
+    <div class="hint">
+        <div>An <a href="http://bartaz.github.com/impress.js/" target="_blank">impress.js</a> powered presentation
+        by <a href="http://twitter.com/butlermaurice" target="_blank">Maurice Butler</a></div>
+        <div>Use the spacebar, arrow keys, or the force to navigate.</div>
+    </div>
+
+    <script type="text/javascript" src="js/shCore.js"></script>
+    <script type="text/javascript" src="js/shBrushJScript.js"></script>
+    <script type="text/javascript">	    SyntaxHighlighter.all();</script>
+    <script type="text/javascript" src="js/impress.js"></script>
+	<script>
+	impress().init();
+	document.getElementById("whoami").addEventListener('impress:stepleave',function(){document.getElementById('joker').play();});
+	</script>
+</body>
+</html>
