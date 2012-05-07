@@ -2,90 +2,432 @@
 <html lang="en">
 <head>
     <meta charset="utf-8" />
-    
-    <title>Confusing & completely unreadable JavaScript performance tricks that you will
-        most probably never use, & some you might... | by Maurice Butler @butlermaurice
-    </title>
-
+    <title>jQueries... How do the work? | by Maurice Butler @butlermaurice </title>
     <link href="css/impress.css" rel="stylesheet" />
     <link href="css/shCoreDefault.css" rel="stylesheet" />
-
 </head>
 <body class="impress-not-supported">
-	<div class="fallback-message">
-		Your trojan doesn't support impress.js. Get with the times and <a href="https://www.google.com/chrome">
-			install Chrome</a> already...
-	</div>
-	
-	<div id="impress">
-        
-		<audio id="joker" preload="auto autobuffer"> 
-		  <source src="steve_miller_the_joker.mp3" />
-		  <source src="steve_miller_the_joker.ogg" />
-		  <source src="steve_miller_the_joker.wav" />
-		</audio>
-		
-        <div id="firstslide" class="step">
-            jQuery - Soooo, How does it work ?
+    <div class="fallback-message">
+        Your trojan doesn't support impress.js. Get with the times and <a href="https://www.google.com/chrome">
+            install Chrome</a>already...
+    </div>
+    <div id="impress">
+        <audio id="joker" preload="auto autobuffer">
+            <source src="steve_miller_the_joker.mp3" />
+            <source src="steve_miller_the_joker.ogg" />
+            <source src="steve_miller_the_joker.wav" />
+        </audio>
+        <div id="firstslide" class="step" data-y="-1500">
+            <div style="text-align: center;">
+                ; <span class="comment">// for saftey...</span>
+            </div>
         </div>
-
-        <div id="whoami" class="step" data-x="350" data-y="-250"  data-rotate="90">
+        <div class="step">
+            <img src="images/raptor.png" class="center" />
+        </div>
+        <div id="whoami" class="step" data-x="350" data-y="-250" data-rotate="90">
             So who am I?
         </div>
-
         <div id="spacecowboy" class="step" data-x="500" data-y="-1000" data-scale="0.5">
-           Some people call me the space cowboy...<img src="images/SpaceCowboy.png" style="display: block; margin-left: auto; margin-right: auto;" /> 
+            Some people call me the space cowboy...<img src="images/SpaceCowboy.png" class="center" />
         </div>
-
         <div id="gangster" class="step" data-x="500" data-y="-1000" data-scale="0.3">
-            Some call me the gangster of love...<img src="images/GangsterOfLove.png" style="display: block; margin-left: auto; margin-right: auto;" />  
+            Some call me the gangster of love...<img src="images/GangsterOfLove.png" class="center" />
         </div>
- 
         <div id="fluffy" class="step" data-x="500" data-y="-1000" data-scale="0.1">
             Some call me that fluffy guy from Madagascar...
-            <img src="images/Maurice.png" style="float:right; margin:10px 200px 0 0;"/>  
+            <img src="images/Maurice.png" style="float: right; margin: 10px 200px 0 0;" />
         </div>
- 
-        <div class="step" data-y="600" >
+        <div class="step" data-y="800">
             Most however call me Maurice Butler.
-      
-           <img src="images/Twitter.png" style="float:left; margin:10px 10px 0 0;" /> 
+            <img src="images/Twitter.png" style="float: left; margin: 10px 10px 0 0;" />
             <a href="https://twitter.com/ButlerMaurice" target="_blank">@butlermaurice</a>
-            <a href="http://mauricebutler.wordpress.com" target="_blank">mauricebutler.wordpress.com</a>
-            <a href="https://github.com/MauriceButler" target="_blank">github.com/MauriceButler</a>
-            Senior Analyst Programmer at Sunsuper
-        </div>
- 
-        <div class="step" data-x="1500" data-y="-1400" >
-          <strong>Disclaimer: </strong> 
-        </div>
-
-        
-
-
-        <div class="step" data-x="14000" data-y="-1400" >
-           <img src="images/Twitter.png" style="float:left; margin:10px 10px 0 0;" /> 
-            <a href="https://twitter.com/ButlerMaurice" target="_blank">@butlermaurice</a>
-            <a href="http://mauricebutler.wordpress.com" target="_blank">mauricebutler.wordpress.com</a>
-            <a href="https://github.com/MauriceButler" target="_blank">github.com/MauriceButler</a>
+            <br />
+            <a href="http://mauricebutler.wordpress.com" target="_blank">mauricebutler.wordpress.com
+            </a>
+            <br />
+            <a href="https://github.com/MauriceButler" target="_blank">github.com/MauriceButler
+            </a>
+            <br />
             Senior Analyst Programmer at Sunsuper
         </div>
 
+
+
+        <!-- Start -->
+        <div class="step" data-x="1500" data-y="-1400">
+            <strong>Credit where its due</strong>
+            <br />
+            Some of the concepts and the actual idea behind this presentation have been 
+            <del>blatantly stolen</del> "borrowed" from a talk done by Jared Wyles (<a href="https://twitter.com/rioter"
+                target="blank">@rioter</a>) at <a href="http://www.dddbrisbane.com/" target="blank">
+                    DDDBrisbane</a> last year.
+        </div>
+        <div id="highlevel" class="step" data-x="1500" data-y="-700">
+            <strong>intro.js</strong>
+            <br />
+            <pre class="brush: js; gutter: false; ">
+(function( window, undefined ) {
+
+// Use the correct document accordingly with window argument (sandbox)
+var document = window.document,
+	navigator = window.navigator,
+	location = window.location;
+	</pre>
+            <strong>core.js</strong>
+            <br />
+            <img src="images/magic.png" class="center" />
+            <strong>outro.js</strong>
+            <br />
+            <pre class="brush: js; gutter: false; ">
+})( window );
+</pre>
+        </div>
+        <div id="intoMagic" class="step" data-x="1500" data-y="-700">
+            <strong>core.js</strong>
+            <br />
+            <pre class="brush: js; gutter: false; ">
+// Define a local copy of jQuery
+var jQuery = function( selector, context ) {
+		// The jQuery object is actually just the init constructor 'enhanced'
+		return new jQuery.fn.init( selector, context, rootjQuery );
+	}
+			</pre>
+        </div>
+        <div class="step" data-x="1500" data-y="0">
+            <strong>Sanity Checks</strong>
+            <br />
+            <pre class="brush: js; gutter: false; ">
+// Handle $(""), $(null), or $(undefined)
+if ( !selector ) {
+	return this;
+}
+
+// Handle $(DOMElement)
+if ( selector.nodeType ) {
+	this.context = this[0] = selector;
+	this.length = 1;
+	return this;
+}
+
+// The body element only exists once, optimize finding it
+if ( selector === "body" && !context && document.body ) {
+	this.context = document;
+	this[0] = document.body;
+	this.selector = selector;
+	this.length = 1;
+	return this;
+}
+			</pre>
+        </div>
+        <div class="step" data-x="1500" data-y="600">
+            <strong>Check for HTML strings</strong>
+            <br />
+            <pre class="brush: js; gutter: false; ">
+// A simple way to check for HTML strings or ID strings
+quickExpr = /^(?:[^#<]*(<[\w\W]+>)[^>]*$|#([\w\-]*)$)/
+
+// Are we dealing with HTML string or an ID?
+if ( selector.charAt(0) === "<" && selector.charAt( selector.length - 1 ) === ">" && selector.length >= 3 ) {
+	// Assume that strings that start and end with <> are HTML and skip the regex check
+	match = [ null, selector, null ];
+
+} else {
+	match = quickExpr.exec( selector );
+}
+			</pre>
+        </div>
+        <div class="step" data-x="1500" data-y="1200">
+            <strong>Id without context</strong>
+            <br />
+            <pre class="brush: js; gutter: false; ">
+// HANDLE: $("#id")
+elem = document.getElementById( match[2] );
+
+if ( elem && elem.parentNode ) {
+	// Handle the case where IE and Opera return items
+	// by name instead of ID
+	if ( elem.id !== match[2] ) {
+		return rootjQuery.find( selector );
+	}
+
+	// Otherwise, we inject the element directly into the jQuery object
+	this.length = 1;
+	this[0] = elem;
+}
+
+this.context = document;
+this.selector = selector;
+return this;
+			</pre>
+        </div>
+        <div class="step" data-x="1500" data-y="1900">
+            <strong>Most selectors end up here</strong>
+            <br />
+            <pre class="brush: js; gutter: false; ">
+if ( !context || context.jquery ) {
+	return ( context || rootjQuery ).find( selector );
+
+// HANDLE: $(expr, context)
+// (which is just equivalent to: $(context).find(expr)
+} else {
+	return this.constructor( context ).find( selector );
+}
+			</pre>
+        </div>
+
+
+
+        <!-- Sizzle -->
+        <div class="step" data-x="3000" data-y="-1400">
+            <img src="images/sizzle.png" class="center" />
+            <br />
+            <div style="text-align: center;">The reason most people use jQuery...</div>
+        </div>
+        <div class="step" data-x="3000" data-y="-700">
+            <strong>Tags and Class selectors</strong>
+            <br />
+            <pre class="brush: js; gutter: false; ">
+// See if we find a selector to speed up
+var match = /^(\w+$)|^\.([\w\-]+$)|^#([\w\-]+$)/.exec( query );
+
+if ( match && (context.nodeType === 1 || context.nodeType === 9) ) {
+	// Speed-up: Sizzle("TAG")
+	if ( match[1] ) {
+		return makeArray( context.getElementsByTagName( query ), extra );
+
+	// Speed-up: Sizzle(".CLASS")
+	} else if ( match[2] && Expr.find.CLASS && context.getElementsByClassName ) {
+		return makeArray( context.getElementsByClassName( match[2] ), extra );
+	}
+}
+			</pre>
+        </div>
+        <div class="step" data-x="3000" data-y="0">
+            <strong>Everything else</strong>
+            <br />
+            <pre class="brush: js; gutter: false; ">
+try {
+	return makeArray( context.querySelectorAll(query), extra );
+} catch(qsaError) {}
+			</pre>
+            <img src="images/allthings.png" class="center" />
+        </div>
+        <div class="step" data-x="3000" data-y="700">
+            <strong>Or not...</strong>
+            <img src="images/ie.png" class="center" />
+        </div>
+        <div class="step" data-x="3000" data-y="1300">
+            <strong>if (!document.querySelectorAll)</strong>
+            <br />
+            <pre class="brush: js; gutter: false; ">
+var chunker = /((?:\((?:\([^()]+\)|[^()]+)+\)|\[(?:\[[^\[\]]*\]
+                |['"][^'"]*['"]
+                |[^\[\]'"]+)+\]|\\.|[^ >+~,(\[\\]+)+
+                |[>+~])(\s*,\s*)?((?:.|\r|\n)*)/g,
+			</pre>
+        </div>
+        <div class="step" data-x="3000" data-y="1900">
+            <strong>Eventualy it becomes...</strong>
+            <br />
+            <pre class="brush: js; gutter: false; ">
+do {
+	chunker.exec( "" );
+	m = chunker.exec( soFar );
+
+	if ( m ) {
+		soFar = m[3];
+
+		parts.push( m[1] );
+
+		if ( m[2] ) {
+			extra = m[3];
+			break;
+		}
+	}
+} while ( m );
+			</pre>
+        </div>
+        <div class="step" data-x="3000" data-y="2400">
+            <strong>Here is where is gets interesting</strong>
+            <br />
+            <pre class="brush: js; gutter: false; ">
+ret = seed ?
+	{ expr: parts.pop(), set: makeArray(seed) } :
+	Sizzle.find( parts.pop(), 
+                parts.length === 1 && (parts[0] === "~" || parts[0] === "+") 
+                && context.parentNode ? context.parentNode : context, 
+                contextXML );
+
+			</pre>
+        </div>
+        <div class="step" data-x="3000" data-y="3100">
+            <strong>OK, now lets find something</strong>
+            <br />
+            <pre class="brush: js; gutter: false; ">
+Sizzle.find = function( expr, context, isXML ) {
+
+// ...
+
+for ( i = 0, len = Expr.order.length; i < len; i++ ) {
+	type = Expr.order[i];
+
+	if ( (match = Expr.leftMatch[ type ].exec( expr )) ) {
+		left = match[1];
+		match.splice( 1, 1 );
+
+		if ( left.substr( left.length - 1 ) !== "\\" ) {
+			match[1] = (match[1] || "").replace( rBackslash, "" );
+			set = Expr.find[ type ]( match, context, isXML );
+
+			if ( set != null ) {
+				expr = expr.replace( Expr.match[ type ], "" );
+				break;
+			}
+		}
+	}
+}
+
+// ...
+
+}
+			</pre>
+        </div>
+        <div class="step" data-x="3000" data-y="3600">
+            <strong>Simple function for this case</strong>
+            <br />
+            <pre class="brush: js; gutter: false; ">
+TAG: function( match, context ) {
+	if ( typeof context.getElementsByTagName !== "undefined" ) {
+		return context.getElementsByTagName( match[1] );
+	}
+}
+			</pre>
+        </div>
+        <div class="step" data-x="3000" data-y="4100">
+            <strong>Walk the DOM</strong>
+            <br />
+            <pre class="brush: js; gutter: false; ">
+"": function(checkSet, part, isXML){
+		var nodeCheck,
+			doneName = done++,
+			checkFn = dirCheck;
+
+		if ( typeof part === "string" && !rNonWord.test( part ) ) {
+			part = part.toLowerCase();
+			nodeCheck = part;
+			checkFn = dirNodeCheck;
+		}
+
+		checkFn( "parentNode", part, doneName, checkSet, nodeCheck, isXML );
+	},
+			</pre>
+        </div>
+        <div class="step" data-x="3000" data-y="4700">
+            <strong>Still Walking</strong>
+            <br />
+            <pre class="brush: js; gutter: false; ">
+function dirCheck( dir, cur, doneName, checkSet, nodeCheck, isXML ) {
+	for ( var i = 0, l = checkSet.length; i < l; i++ ) {
+		var elem = checkSet[i];
+
+		if ( elem ) {
+			var match = false;
+
+			elem = elem[dir];
+
+			while ( elem ) {
+				if ( elem[ expando ] === doneName ) {
+					match = checkSet[elem.sizset];
+					break;
+				}
+
+				if ( elem.nodeType === 1 ) {
+					if ( !isXML ) {
+						elem[ expando ] = doneName;
+						elem.sizset = i;
+					}
+
+					if ( typeof cur !== "string" ) {
+						if ( elem === cur ) {
+							match = true;
+							break;
+						}
+
+					} else if ( Sizzle.filter( cur, [elem] ).length > 0 ) {
+						match = elem;
+						break;
+					}
+				}
+			</pre>
+        </div>
+        <div class="step" data-x="3000" data-y="5400">
+            <strong>We now have a giant stack of elements</strong>
+            <br />
+            <img src="images/pancakes.png" class="center" />
+        </div>
+        <div class="step" data-x="3000" data-y="6000">
+            <strong>Filter</strong>
+            <br />
+            <pre class="brush: js; gutter: false; ">
+
+Sizzle.filter = function( expr, set, inplace, not ) {
+
+    // Long boring code we have already seen...
+
+    return result;
+}
+			</pre>
+        </div>
+        <!-- Wrap Up -->
+        <div class="step" data-x="4500" data-y="-1400">
+            <strong>Ding!</strong>
+            <br />
+            <img src="images/achievement.png" class="center" />
+        </div>
+        <div class="step" data-x="4500" data-y="-700">
+            <strong>Take away</strong>
+            <br />
+            <ul>
+                <li>Limit the amount selectors have to walk the DOM</li>
+                <li>Use Id or Class selectors where possible</li>
+                <li>Avoid Decentdant (space) Selectors</li>
+                <li>Pass a context</li>
+                <li>Ensure your right most selector is as specific as possible</li>
+                <li>Use the browser optimised selectors</li>
+                <li>Keep your DOM shallow</li>
+                <li>Only query when you need to, cache the result</li>
+            </ul>
+        </div>
+        <!-- Final Slide -->
+        <div class="step" data-x="14000" data-y="-2300">
+            <img src="images/Twitter.png" style="float: left; margin: 10px 10px 0 0;" />
+            <a href="https://twitter.com/ButlerMaurice" target="_blank">@butlermaurice</a>
+            <br />
+            <a href="http://mauricebutler.wordpress.com" target="_blank">mauricebutler.wordpress.com
+            </a>
+            <br />
+            <a href="https://github.com/MauriceButler" target="_blank">github.com/MauriceButler
+            </a>
+            <br />
+            Senior Analyst Programmer at Sunsuper
+        </div>
     </div>
-
     <div class="hint">
-        <div>An <a href="http://bartaz.github.com/impress.js/" target="_blank">impress.js</a> powered presentation
-        by <a href="http://twitter.com/butlermaurice" target="_blank">Maurice Butler</a></div>
+        <div>
+            An <a href="http://bartaz.github.com/impress.js/" target="_blank">impress.js</a>
+            powered presentation by <a href="http://twitter.com/butlermaurice" target="_blank">Maurice
+                Butler</a>
+        </div>
         <div>Use the spacebar, arrow keys, or the force to navigate.</div>
     </div>
-
     <script type="text/javascript" src="js/shCore.js"></script>
     <script type="text/javascript" src="js/shBrushJScript.js"></script>
-    <script type="text/javascript">	    SyntaxHighlighter.all();</script>
+    <script type="text/javascript">SyntaxHighlighter.all();</script>
     <script type="text/javascript" src="js/impress.js"></script>
-	<script>
-	impress().init();
-	document.getElementById("whoami").addEventListener('impress:stepleave',function(){document.getElementById('joker').play();});
-	</script>
+    <script>
+        impress().init();
+        document.getElementById("whoami").addEventListener('impress:stepleave', function () { document.getElementById('joker').play(); });
+    </script>
 </body>
 </html>

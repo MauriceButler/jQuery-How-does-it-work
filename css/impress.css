@@ -27,8 +27,8 @@ footer, header, hgroup, menu, nav, section {
 body {
     line-height: 1;
 }
-ol, ul {
-    list-style: none;
+li {
+    font-size: 28px !important;
 }
 blockquote, q {
     quotes: none;
@@ -69,8 +69,17 @@ i, em { font-style: italic}
 a {
   text-decoration: none;    
 }
+      
+img.center{
+	display: block; 
+	margin-left: auto; 
+	margin-right: auto;"
+}	  
         
-        
+span.comment{
+	color: green;
+	padding-left: 50px;
+}
 /* COMMON STEP STYLES */
 
 .step {
@@ -150,7 +159,7 @@ a {
    
 }
 
-#spacecowboy, #gangster, #fluffy{
+#spacecowboy, #gangster, #fluffy, #intoMagic, #highlevel{
     opacity:0;
     -webkit-transition: opacity 1s linear;
     -moz-transition:    opacity 1s linear;
@@ -172,8 +181,14 @@ a {
 {
     opacity:1;
 }
-
-
+#intoMagic.active
+{
+    opacity:1;
+}
+#highlevel.active
+{
+    opacity:1;
+}
 .slide {
     display: block;
 
